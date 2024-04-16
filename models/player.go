@@ -13,4 +13,5 @@ type Player struct {
 	ClanJoinDate time.Time
 	Clan         *Clan
 	Tracked      bool
+	Filters      []Filter `gorm:"many2many:filter_tracked_player;"`
 }

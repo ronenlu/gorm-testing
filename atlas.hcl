@@ -7,13 +7,13 @@ data "external_schema" "gorm" {
     "ariga.io/atlas-provider-gorm",
     "load",
     "--path", "./models",
-    "--dialect", "sqlite", // | postgres | sqlite | sqlserver
+    "--dialect", "mysql", // | postgres | sqlite | sqlserver
   ]
 }
 
 env "gorm" {
   src = data.external_schema.gorm.url
-  dev = "sqlite://dev?mode=memory"
+  dev = "docker://mysql/8/dev"
   migration {
     dir = "file://migrations"
   }
